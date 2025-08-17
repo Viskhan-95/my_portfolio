@@ -9,7 +9,7 @@ import {
     DrawerContent,
     DrawerClose,
 } from "@/components/navigation/drawer";
-import { NAV_LINKS } from "@/lib/data";
+import { NAV_LINKS_TEXTS } from "@/lib/data";
 import { mergeClasses } from "@/lib/utils";
 import useWindowSize from "@/hooks/use-window-size";
 import useScroll from "@/hooks/use-scroll";
@@ -18,10 +18,11 @@ import ThemeSwitcher from "@/components/general/theme-switcher";
 import IconButton from "@/components/general/icon-button";
 import LanguageSwitcher from "@/components/general/language-switcher";
 import Typography from "@/components/general/typography";
+import { useLanguage } from "@/lib/language-context";
 
 const Logo = () => (
     <Typography variant="h3" className="font-bold">
-        {"<SS />"}
+        {"<Viskhan />"}
     </Typography>
 );
 
@@ -29,6 +30,8 @@ const Header = () => {
     const scrolled = useScroll(40);
     const [isOpen, setIsOpen] = useState(false);
     const size = useWindowSize();
+    const { currentLang } = useLanguage();
+    const navLinks = NAV_LINKS_TEXTS[currentLang];
 
     // close sidebar if open in screen size < 768px
     useEffect(() => {
@@ -50,7 +53,7 @@ const Header = () => {
                 </Link>
                 <div className="hidden items-center gap-6 md:flex">
                     <ul className="flex list-none items-center gap-6">
-                        {NAV_LINKS.map((link, index) => (
+                        {navLinks.map((link, index) => (
                             <li key={index}>
                                 <Link href={link.href}>{link.label}</Link>
                             </li>
@@ -80,7 +83,7 @@ const Header = () => {
                         </div>
                         <div className="border-b border-gray-100 p-4">
                             <ul className="flex list-none flex-col gap-4">
-                                {NAV_LINKS.map((link, index) => (
+                                {navLinks.map((link, index) => (
                                     <li key={index}>
                                         <Link
                                             href={link.href}

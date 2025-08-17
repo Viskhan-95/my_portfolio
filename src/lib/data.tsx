@@ -258,7 +258,8 @@ export const PROJECTS: ProjectDetails[] = [
         descriptionRu:
             "Мобильное приложение для аптеки с возможностью просмотра товара, добавления в корзину, заказа продукта как с онлайн оплатой и доставкой, так и на месте, а также с новостной страницей.",
         url: "#",
-        previewImage: null, // Убираем изображение
+        previewImage: null, // Убираем изображение, так как есть видео
+        video: "/videos/pharmacy.mp4", // Добавляем видео
         technologies: [
             "React Native",
             "TypeScript",
